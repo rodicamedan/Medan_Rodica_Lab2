@@ -87,9 +87,7 @@ namespace Medan_Rodica_Lab2
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        { }
     }
 
   }
