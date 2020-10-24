@@ -119,7 +119,7 @@ namespace Medan_Rodica_Lab2
             }
         }
         private readonly DateTime mTimeOfCreation;
-        public DateTime TimeOfCreation
+        public DateTime  TimeOfCreation
         {
             get
             {
