@@ -129,8 +129,8 @@ namespace Medan_Rodica_Lab2
         }
         public Doughnut(DoughnutType aFlavor) // constructor
         {
-            mTimeOfCreation = DateTime.Now;
-            mFlavor = aFlavor;
+            mTimeOfCreation =  DateTime.Now;
+            mFlavor =  aFlavor;
         }
 
     }
