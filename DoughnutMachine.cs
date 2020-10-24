@@ -115,7 +115,7 @@ namespace Medan_Rodica_Lab2
             }
             set
             {
-                mPrice = value;
+                mPrice =  value;
             }
         }
         private readonly DateTime mTimeOfCreation;
