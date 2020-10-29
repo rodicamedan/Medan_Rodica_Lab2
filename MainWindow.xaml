@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medan_Rodica_Lab2"
+        xmlns:StopCommand="clr-namespace:Medan_Rodica_Lab2.StopCommand"
         mc:Ignorable="d"
         Title=" Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="myDoughnutMachine">
-    <Grid Loaded="frmMain_Loaded">
+    <Grid Loaded="frmMain_Loaded" MenuItem.Click="FilledItemsShow_Click">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="29*"/>
             <ColumnDefinition Width="771*"/>
@@ -31,32 +32,37 @@
         <GroupBox x:Name="gbSale" Header="Current Sale" FontWeight="Bold" Margin="18,33,51,22" Grid.Row="1" Grid.Column="1"/>
         <Label x:Name="lblQuantity" Content="Quantity" Margin="32,57,662,128" Grid.Row="1" Grid.Column="1"/>
         <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Margin="95,58,648,132" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="btnAddToSale" Content="Add To Sale " Margin="577,60,83,136" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="btnAddToSale" Content="Add To Sale " Margin="577,60,83,136" Grid.Row="1" Grid.Column="1" Click="btnAdd_Click" />
         <Label x:Name="lblType" Content="Type" Margin="141,59,570,126" Grid.Row="1" Grid.Column="1"/>
         <Label x:Name="lblPrice" Content="Price" Margin="361,60,342,137" Grid.Row="1" Grid.Column="1"/>
-        <ComboBox x:Name="cmbType" Margin="187,63,435,136" Grid.Row="1" Grid.Column="1"/>
+        <ComboBox x:Name="cmbType" Margin="187,63,435,136" Grid.Row="1" Grid.Column="1" SelectionChanged="cmbType_SelectionChanged" />
         <TextBox x:Name="txtPrice" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="428,61,237,135" Grid.Row="1" Grid.Column="1"/>
         <Label x:Name="lblTotal" Content="Total" FontWeight="Bold" RenderTransformOrigin="7.313,3.281" Margin="357,165,376,32" Grid.Row="1" Grid.Column="1"/>
         <ListBox x:Name="lstSale" Margin="32,96,237,63" Grid.Row="1" Grid.Column="1"/>
         <TextBox x:Name="txtTotal" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="403,169,288,35" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="btnCheckOut" Content="Check Out " Margin="577,133,83,54" Grid.Row="1" FontWeight="Bold" Grid.Column="1"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item " Margin="577,96,83,95" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="btnCheckOut" Content="Check Out " Margin="577,133,83,54" Grid.Row="1" FontWeight="Bold" Grid.Column="1" Click=" btnCheckOut_Click" />
+        <Button x:Name="btnRemoveItem" Content="Remove Item " Margin="577,96,83,95" Grid.Row="1" Grid.Column="1" Click=" btnRemoveItem_Click" />
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
 Width="230">
             <MenuItem Header="File" IsCheckable="True">
                 <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click" IsCheckable="True"/>
             </MenuItem>
             <MenuItem Header="_Doughnuts" IsCheckable="True" Height="23" Width="34" Click="MenuItem_Click">
-                <MenuItem Header="Make" IsCheckable="True">
+                <MenuItem Header="Make" IsCheckable="True"></MenuItem>
                     <MenuItem Header="Raised">
                         <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed"
 Click="glazedToolStripMenuItem_Click" IsCheckable="True" IsChecked="True" AutomationProperties.Name="glazedToolStripMenuItem"/>
                         <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar"
 IsCheckable="True" Click="sugarToolStripMenuItem_Click" IsChecked="True" AutomationProperties.Name=" sugarToolStripMenuItem"/>
                     </MenuItem>
-                    <MenuItem Header="Filled"/>
+                <MenuItem Header="Filled" Click="FilledItems_Click">
+                    <MenuItem x:Name="lemonFilledMenuItem" Header="Lemon" IsCheckable="True"/>
+                    <MenuItem x:Name="chocolateFilledMenuItem" Header="Chocolate" IsCheckable="True"/>
+                    <MenuItem x:Name="vanillaFilledMenuItem" Header="Vanilla" IsCheckable="True"/>
                 </MenuItem>
-                <MenuItem x:Name="mnuStop" Header="Stop"/>
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click" 
+                          InputGestureText="Ctrl+S" Command="CustomCommands:StopCommand.Launch"/>
+                <MenuItem Header="Inventory"  Command="ApplicationCommands.Print" ></MenuItem> 
             </MenuItem>
         </Menu>
     </Grid>
